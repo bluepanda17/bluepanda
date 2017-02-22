@@ -1,0 +1,383 @@
+\documentclass[mathserif,12pt]{beamer}
+
+%\documentclass[handout, mathserif]{beamer}
+
+\mode<presentation>
+{
+  \usetheme{warsaw}
+%\usecolortheme{whale}
+%	\usepackage{beamerthemesplit}
+%  \setbeamercovered{transparent}
+}
+
+\usepackage{amssymb, amsthm, amsmath,stmaryrd, color, wrapfig, movie15, caption}
+
+\usepackage[OT2,T1]{fontenc}
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+
+%\usepackage{mathrsfs}
+%\usepackage[OT2,OT1]{fontenc}
+%\usepackage{draftcopy}
+%%\draftcopyName{Preprint}{200}
+%\newcommand\cyr{%
+%\renewcommand\rmdefault{wncyr}%
+%\renewcommand\sfdefault{wncyss}%
+%\renewcommand\encodingdefault{OT2}%
+%\normalfont \selectfont} \DeclareTextFontCommand{\textcyr}{\cyr}
+%\DeclareMathOperator{\Sha}{\textcyr{Sh}}
+
+%\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+%\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+%\DeclareMathSymbol{\Sha}{\fontencoding{OT2}\selectfont\char88}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{wtheorem}[theorem]{``Theorem''}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\theoremstyle{definition} \newtheorem{fact}[theorem]{Fact}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+%\newtheorem{notation}[theorem]{Notation}
+\newtheorem{EXample}[theorem]{Example}
+%\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{claim}[theorem]{Claim}
+%\newtheorem{assumption}[theorem]{Assumption}
+
+\include{makros}
+\DeclareMathOperator{\mspec}{m-Spec}
+\newcommand{\ka}{\kappa}
+
+\renewcommand\sfdefault{phv}
+\renewcommand\familydefault{\sfdefault}
+\usetheme{default}
+\usepackage{color}
+\useoutertheme{default}
+\usepackage{texnansi}
+\usepackage{marvosym}
+\definecolor{bottomcolour}{rgb}{0.32,0.3,0.38}
+\definecolor{middlecolour}{rgb}{0.08,0.08,0.16}
+\setbeamerfont{title}{size=\Huge}
+\setbeamercolor{structure}{fg=gray}
+\setbeamertemplate{frametitle}[default]%[center]
+\setbeamercolor{normal text}{bg=black, fg=white}
+\setbeamertemplate{background canvas}[vertical shading]
+[bottom=bottomcolour, middle=middlecolour, top=black]
+\setbeamertemplate{items}[circle]
+\setbeamerfont{frametitle}{size=\huge}
+
+
+\title{Mixed-Level Saito-Kurokawa Liftings}
+\author{Huixi Li}
+\institute{Clemson University}
+\date{April 6, 2017}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Introduction}
+The classical Saito-Kurokawa lifting of full level gives a sequence of Hecke equivariant isomorphisms
+\begin{equation*}
+S_{2k - 2}(\SL_2(\mathbb{Z})) \overset{\cong}{\longrightarrow} J_{k,1}^{\text{cusp}}(\SL_2^J(\bbZ)) \overset{\cong}{\longrightarrow} S_k(\Sp_4(\mathbb{Z})),
+\end{equation*}
+where $S_{2k - 2}(\SL_2(\bbZ))$ is the space of elliptic cusp forms, $J_{k, 1}^{\text{cusp}} (\SL_2^J(\bbZ))$ is the space of Jacobi
+cusp forms and $S_k(\Sp_4(\bbZ))$ is the space of Siegel cusp forms. \\[0.2in]
+
+\pause
+
+We begin by focusing on the map
+\begin{equation*}
+S_{2k - 2}(\SL_2(\mathbb{Z})) \overset{\cong}{\longrightarrow} J_{k,1}^{\text{cusp}}(\SL_2^J(\bbZ)).
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Jacobi forms}
+
+\begin{definition}
+A {\em Jacobi form} of weight $k$ and index $t$ and level $\Gamma_0^J(N) : = \Gamma_0(N) \ltimes \bbZ^2$ is a holomorphic function $\phi : \mH \times \bbC
+\rightarrow \bbC$ satisfying \pause
+
+\begin{enumerate}
+\item $(\phi|_{k, t} (\gamma, X)) (\tau, z)= \phi(\tau, z)$ for all $\gamma \in \Gamma_0(N)$ and $X \in \bbZ^2$; \pause
+\item for each $\gamma \in \Gamma_0(N)$, $\phi|_{k, t}\gamma$ has a Fourier development of the form
+\begin{align*}
+\sum_{r^2 \leq 4nt} c(n, r) e(n \tau) e(r z).
+\end{align*}
+%\color{red} Go ahead and put in the Fourier expansion here.  Also say what a cusp form is. \color{white}
+%If $\phi$ satisfies the stronger condition $c(n, r) \neq 0$ implies $n > {\frac {r^2} {4 t}}$ in its Fourier expansion, it is called a {\em cusp form}.
+
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Jacobi cusp forms}
+If $c(n, r) \neq 0 \Rightarrow r^2 > 4nt$ in the above Fourier expansion, $\phi$ is called a cusp form.\\[0.5in]
+\pause
+We denote by $J_{k, t}^{\text{cusp}}(\Gamma_0^J(N))$ the vector space of Jacobi cusp forms of weight $k$, index $t$ and level $\Gamma_0^J(N)$.
+
+\end{frame}
+
+\begin{frame}{Generalizations}
+There are two well-known generalizations of the map $S_{2k-2}(\SL_2(\bbZ)) \rightarrow J_{k,1}(\SL_2^J(\bbZ))$: \pause
+
+\begin{enumerate}
+\item (Kohnen, Kramer)
+\begin{equation*}
+S_{2k - 2}(\Gamma_0(\color{green}N\color{white})) \longrightarrow J_{k,1}^{\text{cusp}}(\Gamma_0^{J}(\color{green}N\color{white}))
+\end{equation*} \pause
+\item (Gross, Kohnen, Skoruppa, Zagier)
+\begin{equation*}
+S_{2k - 2}^{-}(\Gamma_0(\color{yellow}t\color{white})) \longrightarrow J^{\text{cusp}}_{k, \color{yellow}t\color{white}}(\SL_2^{J}(\bbZ))
+\end{equation*}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{The map}
+
+%On this slide give the map in terms of the cycle integrals, pointing out they arise by just looking at different sets of quadratic forms. So write
+
+%where
+
+%(You don't need all the details, just enough so it is clear the only real difference is the set of quadratic forms you sum over. Maybe list what the set of %quadratic forms is in each case.)
+\begin{align*}
+f & \mapsto \phi_{f}(\tau, z) = C \cdot \sum_{\substack{n, r \in \bbZ \\ r^2 < 4nN}} r(f) e(n\tau) e(r z)
+\end{align*}
+where
+\begin{equation*}
+r(f) = \sum_{Q \in \mQ / \Gamma} \chi_{D_0}(Q) \int_{C_Q} f(\omega)d_{Q, k}\omega
+\end{equation*}
+\pause
+\begin{enumerate}
+\item $\Gamma = \Gamma_0(N)$ and
+\begin{align*}
+\mQ = \{ax^2 + bxy + cy^2: N \mid a, \text{    } b^2 - 4 a c = \Delta\}
+\end{align*}
+\pause
+\item $\Gamma = \Gamma_0(t)$ and 
+\begin{align*}
+\mQ = \{ ax^2+bxy+cy^2: t \mid a, \text{    }b \equiv \rho \pmod{2t}, \text{    } b^2 - 4 a c = \Delta\}
+\end{align*}
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Further generalization}
+B. Ramakrishnan generalized this further:\pause
+
+\begin{equation*}
+S_{2k - 2}(\Gamma_0(\color{green}N\color{yellow}t\color{white})) \longrightarrow J_{k, \color{yellow}t \color{white}}(\Gamma_0^{J}(\color{green}N\color{white}))
+\end{equation*}
+
+\pause
+
+where the map is essentially the same as above, but now we consider the set of quadratic forms
+%(and add what the quadratic forms are here.)
+\pause
+\begin{align*}
+\mQ = \{ ax^2+bxy+cy^2: Nt \mid a, \text{    }b \equiv \rho \pmod{2N}, \text{    } b^2 - 4 a c = \Delta\}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Main Result}
+
+Define
+\begin{equation*}
+S_{2k - 2}^{t}(\Gamma_0(Nt)) = \{ f \in S_{2k - 2}(\Gamma_0(Nt)) :\, \epsilon_t = (- 1)^k \}.
+\end{equation*}
+\pause
+\begin{theorem}[Brown-L.]{1}
+The map given above is a Hecke equivariant isomorphism from $S_{2k - 2}^{t}(\Gamma_0(Nt))$ to $J_{k,t}^{\cusp}(\Gamma_0^{J}(N))$,
+%(add any conditions here you need)
+where $N, t \in \bbN$ are square free integers such that $\gcd(N, t) = 1$.
+
+\end{theorem}
+\pause
+To prove this, one needs to construct a mixed-level Saito-Kurokawa lifting and use some representation theory, which is the next goal of the talk.
+\end{frame}
+
+%Elliptic Modular Forms
+%Jacobi Forms
+%\begin{frame}{Jacobi Groups and Jacobi Forms}
+%\begin{definition}
+%A Jacobi group of level $t$ is the semi-direct product $\Gamma_0^J(t) := \Gamma_0(t) \ltimes \bbZ^2$ with the group law
+%\begin{align*}
+%(M, X) (M', X') = (M M', X M' + X'),
+%\end{align*}
+%where $M, M' \in \Gamma_0(t)$ and $X, X' \in \bbZ^2$.
+%\end{definition}
+%
+%\pause
+%
+%\begin{definition}
+%A {\em Jacobi form} of weight $k$ and index $N$ ($k, M \in \bbN$) and level $\Gamma_0^J(t)$ is a holomorphic function $\phi : \mH \times \bbC
+%\rightarrow \bbC$ satisfying
+%
+%(\rm{1}) $(\phi|_{k, M} \gamma) (\tau, z)= \phi(\tau, z)$ for all $\gamma \in \Gamma_0^J(t)$;
+%
+%(\rm{2}) $\phi$ is holomorphic at all the cusps.
+%%If $\phi$ satisfies the stronger condition $c(n, r) \neq 0$ implies $n > {\frac {r^2} {4 t}}$ in its Fourier expansion, it is called a {\em cusp form}.
+%Define Jacobi cusp forms?
+%
+%We denote by $J_{k, M}^{\text{cusp}}(\Gamma_0^J(t))$ the vector spaces of Jacobi cusp forms of weight $k$, level $\Gamma_0^J(t)$ and index $M$.
+%\end{definition}
+%\end{frame}
+
+%Siegel Modular forms
+\begin{frame}{Symplectic groups}
+\begin{definition}
+Set $J_2 = \begin{pmatrix} 0_2 & -1_2 \\ 1_2 & 0_2 \end{pmatrix}$ and define the degree 2 symplectic group as
+\begin{align*}
+\Sp_4 = \left\{ g \in \GL_4 :\, ^t\! g J_2 g = J_2 \right\}.
+\end{align*}
+\end{definition}
+
+\pause
+
+\begin{definition}
+A congruence subgroup of level $N$ is defined by
+\begin{align*}
+\Gamma_0^{(2)}(N) = \left\{ \begin{pmatrix} A & B \\ C & D \end{pmatrix} \in \Sp_4(\bbZ) :\, C \equiv 0 \pmod{N} \right\}.
+\end{align*}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Paramodular group}
+\begin{definition}
+We define the paramodular group of level $t$ to be
+\begin{align*}
+\Gamma[t] = \Sp_4(\bbQ) \bigcap \left\{ \begin{pmatrix} \bbZ & t \bbZ & \bbZ & \bbZ \\ \bbZ & \bbZ & \bbZ & t^{- 1} \bbZ \\ \bbZ & t \bbZ & \bbZ & \bbZ
+\\ t \bbZ & t \bbZ & t \bbZ & \bbZ \end{pmatrix} \right\}.
+\end{align*}
+\end{definition}
+
+\end{frame}
+
+\begin{frame}{Mixed level group}
+
+\begin{definition}
+We define the subgroup of the paramodular group of level $t$ with congruence level $N$ to be
+\begin{align*}
+\Gamma_N[t] = \Sp_4(\bbQ) \bigcap \left\{ \begin{pmatrix} \bbZ & t \bbZ & \bbZ & \bbZ \\ \bbZ & \bbZ & \bbZ & t^{-1} \bbZ \\ N \bbZ & N t \bbZ & \bbZ &
+\bbZ \\ N t \bbZ & N t \bbZ & t \bbZ & \bbZ \end{pmatrix} \right\}.
+\end{align*}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Siegel cusp forms}
+\begin{definition}
+We define the Siegel upper half space of genus 2 as
+\begin{align*}
+\fH^2 = \{Z \in \Mat_2(\bbC):\, \!^tZ = Z, Z = X + i Y, Y = \Im(Z) > 0 \}.
+\end{align*}
+\end{definition}
+
+\pause
+
+\begin{definition}
+%Let $\Gamma$ be a subgroup of $\Sp_4(\bbZ)$ of finite index. 
+We say a function $f : \fH^2 \rightarrow \bbC$ is a Siegel modular form of weight
+$k$ and level $\Gamma$ if $f$ is holomorphic and satisfies
+\begin{align*}
+(f|_{k} \gamma)(z) = f(z)
+\end{align*}
+for all $\gamma \in \Gamma$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Saito-Kurokawa liftings}
+The classical Saito-Kurokawa lifting is a Hecke equivariant linear map from $S_{2k - 2}(\SL_2(\bbZ))$ to $S_k(\Sp_4(\bbZ))$, and it can be constructed as the
+composition of two linear maps
+\begin{align*}
+S_{2k - 2}(\SL_2(\bbZ)) \rightarrow J_{k, 1}^{\text{cusp}}(\SL_2^J(\bbZ)) \rightarrow S_k(\Sp_4(\bbZ))
+\end{align*}
+
+\pause
+
+Two generalizations:
+
+\pause
+
+\begin{align*}
+S_{2k - 2}^{-} (\Gamma_0(t)) \rightarrow J_{k, t}^{\text{cusp}}(\SL_2^J(\bbZ)) \rightarrow S_k(\Gamma[t]),
+\end{align*}
+\pause
+\begin{align*}
+S_{2k - 2}(\Gamma_0(N)) \rightarrow J_{k, 1}^{\text{cusp}}(\Gamma_0^J(N)) \rightarrow S_k(\Gamma_0^{(2)}(N)).
+\end{align*}
+\end{frame}
+
+\begin{frame}{Mixed-Level Lifting}
+\begin{theorem}[Schmidt, Brown-Zantout]
+Let $N$ and $t$ be square-free integers, $\gcd(N, t) = 1$, and $f \in S_{2k - 2}^t(\Gamma_0(Nt))$ a new form. There exists an eigenform $F_f \in S_k(\Gamma_N[t])$, unique up to scalar multiples, satisfying
+\begin{align*}
+& L(s, F_f, \text{spin}) = \\
+& \left( \prod_{p \mid N, \epsilon_p = - 1} (1 - p^{- s + k - 1}) \right) \zeta(s - k + 1) \zeta(s - k + 2) L(s, f).
+\end{align*}
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Saito-Kurokawa liftings}
+Combining Ramakrishnan's lifting and a lifting of Zantout gives a map
+\begin{align*}
+S_{2k - 2}^t{\Gamma_0(Nt)} \rightarrow J_{k, t}^{\text{cusp}}(\Gamma_0^J(N)) \rightarrow S_k(\Gamma_N[t])
+\end{align*}
+These maps commute with Hecke operators $T_p$ with $p \nmid Nt$. \\[0.2in]
+
+\pause 
+One would like to conclude this is the same as the lifting given in the previous theorem constructed via representation theory.\\[0.2in] \pause
+
+The following theorem gives the desired result that these lifts coincide up to a scalar multiple.
+\end{frame}
+
+
+\begin{frame}{Uniqueness}
+\begin{proposition}[Brown-L.]
+If $F_1, F_2$ are eigenforms in $S_k(\Gamma_{N}[t])$ satisfying
+\begin{align*}
+&L^{Nt}(s,F_1;\spin) \\
+=& L^{Nt}(s,F_2,\spin) \\
+=& \zeta^{Nt}(s-k) \zeta^{Nt}(s-k+1) L^{Nt}(s,f)
+\end{align*}
+and $F_1,F_2$ are new in the sense that there is no $F_3 \in S_k(\Gamma_{N_1}[t_1])$ with $N_1$ a proper divisor of $N$ or $t_1$ a proper divisor of
+$t$ with
+\begin{equation*}
+L^{Nt}(s,F_3;\spin) = \zeta^{Nt}(s-k) \zeta^{Nt}(s-k+1) L^{Nt}(s,f),
+\end{equation*}
+then $F_1$ is a scalar multiple of $F_2$.
+\end{proposition}
+\end{frame}
+
+\begin{frame}{Conclusion}
+One now combines Zantout's isomorphism from Jacobi cusp forms to a subspace of Siegel cusp forms with the previous theorem to conclude the main theorem, which we repeat here for convenience. \\[0.2in]
+\pause
+\begin{theorem}[Brown-L.]
+The map given above is a Hecke equivariant isomorphism from $S_{2k - 2}^{t}(\Gamma_0(Nt))$ to $J_{k,t}^{\cusp}(\Gamma_0^{J}(N))$,
+%(add any conditions here you need)
+where $N, t \in \bbN$ are square free integers such that $\gcd(N, t) = 1$.
+
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{Future work and applications}
+
+\begin{enumerate}  
+\item Let $\bff_{N}$ be a Hida family of tame level $N$.  Stevens constructs a lift of this Hida family to a Hida family of Jacobi forms that recovers the lifting $S_{2k-2}(\Gamma_0(pN)) \rightarrow J_{k,1}(\Gamma_0^{J}(pN))$ upon specialization.  Brown and Klosin have shown this can be done for paramodular level as well.  Showing this in our case would subsume these results. \pause
+\item  The lift of Hida families is used by Darmon-Tornaria to construct Stark-Heegner points on elliptic curves. In joint work with Brown and Klosin we will show the $p$-adic version of our lifting generalizes the construction of Darmon-Tornaria and puts their lifting into a more general framework.
+
+\end{enumerate}
+\end{frame}
+
+\end{document}
+
+
+
+
